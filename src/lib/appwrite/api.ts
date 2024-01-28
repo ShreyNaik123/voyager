@@ -364,7 +364,7 @@ export async function searchPosts(searchTerm: string) {
 	}
 }
 
-export async function getAllUsers(limit?: number) {
+export async function getAllUsers() {
 	try {
 		const allUsers = await databases.listDocuments(
 			appwriteConfig.databaseId,

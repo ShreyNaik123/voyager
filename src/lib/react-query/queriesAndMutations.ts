@@ -162,7 +162,7 @@ export const useDeletePost = () => {
 	return useMutation({
 		mutationFn: ({ postId, imageId }: { postId: string; imageId: string }) =>
 			deletePost(postId, imageId),
-		onSuccess: (data) => {
+		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
 			});
@@ -197,7 +197,7 @@ export const useSearchPosts = (searchTerm: string) => {
 export const useGetAllUsers = () => {
 	return useQuery({
 		queryKey: [QUERY_KEYS.GET_USERS],
-		queryFn: () => getAllUsers(10),
+		queryFn: () => getAllUsers(),
 	});
 };
 
