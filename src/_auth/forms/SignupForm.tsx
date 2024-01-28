@@ -157,7 +157,7 @@ const SignupForm = () => {
 						)}
 					/>
 					<Button type="submit" className="shad-button_primary">
-						{isSigningIn ? (
+						{isSigningIn || isCreatingUser ? (
 							<div className="flex-center gap-2 p-10">
 								<Loader />
 							</div>

@@ -1,11 +1,9 @@
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import {
-	useQueries,
 	useMutation,
 	useQueryClient,
 	useInfiniteQuery,
 	useQuery,
-	queryOptions,
 } from "@tanstack/react-query";
 import {
 	createPost,
@@ -25,7 +23,6 @@ import {
 	signOutAccount,
 	updatePost,
 	updateUser,
-	uploadFile,
 } from "../appwrite/api";
 import { QUERY_KEYS } from "./querykeys";
 
@@ -48,7 +45,7 @@ export const useSignOut = () => {
 	});
 };
 
-export const useCreatePost = (post) => {
+export const useCreatePost = () => {
 	const queryClient = useQueryClient();
 
 	return useMutation({
@@ -154,7 +151,7 @@ export const useUpdatePost = () => {
 		mutationFn: (post: IUpdatePost) => updatePost(post),
 		onSuccess: (data) => {
 			queryClient.invalidateQueries({
-				queryKey: [QUERY_KEYS.GET_POST_BY_ID],
+				queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
 			});
 		},
 	});
@@ -176,11 +173,14 @@ export const useDeletePost = () => {
 export const useGetPosts = () => {
 	return useInfiniteQuery({
 		queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-		queryFn: getInfinitePosts,
-		getNextPageParam: (lastPage) => {
-			if (lastPage && lastPage.documents.length === 0) return null;
+		queryFn: getInfinitePosts as any,
+		initialPageParam: 0,
+		getNextPageParam: (lastPage: any) => {
+			if (lastPage && lastPage.documents.length === 0) {
+				return null;
+			}
 
-			const lastId = lastPage?.documents[lastPage.documents.length - 1].$id;
+			const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
 			return lastId;
 		},
 	});

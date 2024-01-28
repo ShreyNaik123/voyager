@@ -1,9 +1,7 @@
 import BottomBar from "@/components/shared/BottomBar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import Topbar from "@/components/shared/Topbar";
-import { Button } from "@/components/ui/button";
-import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
 	return (

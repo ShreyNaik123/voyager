@@ -33,14 +33,14 @@ const UpdateProfile = () => {
 		defaultValues: {
 			file: [],
 			name: user.name,
-			// username: user.username,
-			// email: user.email,
+			username: user.username,
+			email: user.email,
 			bio: user.bio || "",
 		},
 	});
 
 	const { data: currentUser } = useGetUserById(id || "");
-	const { mutateAsync: updateUser, isLoading: isLoadingUpdate } =
+	const { mutateAsync: updateUser, isPending: isLoadingUpdate } =
 		useUpdateUser();
 
 	if (!currentUser)

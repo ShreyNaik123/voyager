@@ -58,7 +58,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 				imageId: post?.imageId,
 				imageUrl: post?.imageUrl,
 			});
-			if (!updatePost) {
+			if (!updatedPost) {
 				toast({ title: "Please Try Again" });
 			}
 
