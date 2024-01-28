@@ -85,8 +85,7 @@ const SignupForm = () => {
 			<div className="sm:w-420 flex-center flex-col">
 				<img
 					className="max-w-60 max-h-52 p-0 m-0 mb-5"
-					src="/public/assets/images/logo-no-background.png"
-					// src="/public/assets/images/logo.svg"
+					src="/assets/images/logo-no-background.png"
 					alt="logo"
 				/>
 

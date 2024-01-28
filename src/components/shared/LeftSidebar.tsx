@@ -18,7 +18,7 @@ const LeftSidebar = () => {
 					// style={{ height: "30px", width: "30px" }}
 				>
 					<img
-						src="/public/assets/images/logo-no-background.png"
+						src="/assets/images/logo-no-background.png"
 						height={36}
 						width={170}
 					/>
@@ -69,7 +69,7 @@ const LeftSidebar = () => {
 				className="shad-button_ghost"
 				onClick={() => signOut()}
 			>
-				<img src="/public/assets/icons/logout.svg" />
+				<img src="/assets/icons/logout.svg" />
 				<p className="small-medium lg:base-medium	">Logout</p>
 			</Button>
 		</nav>
