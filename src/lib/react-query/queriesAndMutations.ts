@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import {
 	useMutation,

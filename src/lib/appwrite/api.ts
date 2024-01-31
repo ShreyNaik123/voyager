@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { ID } from "appwrite";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
@@ -87,9 +88,10 @@ export async function getCurrentUser() {
 }
 
 export async function signOutAccount() {
+	console.log("In SignOut");
 	try {
 		const session = await account.deleteSession("current");
-
+		console.log("Session Deleted");
 		return session;
 	} catch (error) {
 		console.log(error);
